@@ -1,0 +1,135 @@
+/* ==== Global Layout ==== */
+body {
+  background: #f9fafb;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* ==== Card Styling ==== */
+.container .card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.container .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* ==== Section Header ==== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==== Buttons ==== */
+.btn {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.edit {
+  background: #334155;
+  color: #fff;
+}
+
+.btn.save {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn.add {
+  background: #6d6e6e;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.btn.delete {
+  background: #000102;
+  color: #fff;
+
+  width: 20px;          /* square width */
+  height: 20px;         /* square height */
+  padding: 0;           /* remove extra padding */
+  border-radius: 4px;   /* slightly rounded corners */
+  margin-left: 10px;
+}
+
+/* ==== Inputs & Textarea ==== */
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 6px 0 14px 0;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0px 0px 8px rgba(37, 99, 235, 0.3);
+}
+
+textarea {
+  min-height: 80px;
+}
+
+/* ==== Skills & Tags ==== */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
