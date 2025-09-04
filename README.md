@@ -2,6 +2,8 @@
 
 A modern full-stack web application for managing and exploring user profiles.
 
+📄 **[View My Resume](https://drive.google.com/file/d/1cKVoMhPGTSzK81GDumFCPHk9qRK79PlC/view)**
+
 ---
 
 ## 🌐 Architecture
@@ -135,8 +137,8 @@ curl -X GET https://api-playground-backend-1.onrender.com/profile/profile
 curl -X POST https://api-playground-backend-1.onrender.com/profile/profile \
 -H "Content-Type: application/json" \
 -d '{
-  "name": "Arsh Gupta",
-  "email": "arshg0080@gmail.com",
+  "name": "Vaibhav",
+  "email": "vaibhav0080@gmail.com",
   "education": "BTech in Information Technology",
   "skills": ["React", "Node.js", "MongoDB"]
 }'
@@ -160,5 +162,3 @@ curl -X POST https://api-playground-backend-1.onrender.com/profile/profile \
 ---
 
 Made with ❤️ using **React.js**, **Node.js**, and **MongoDB Atlas** 🌟
-
----
