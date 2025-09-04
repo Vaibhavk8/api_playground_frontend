@@ -1,98 +1,113 @@
-🏗️ Architecture
+# 🏗️ API Playground Project
 
-Frontend:
+A full-stack web application for managing user profiles.
 
-Built with React.js
+---
 
-Deployed on Vercel
+## 🌐 Architecture
 
-Uses environment variable REACT_APP_API_URL to connect with backend
+### **Frontend**
 
-Backend:
+* Built with **React.js**
+* Deployed on **Vercel**
+* Uses environment variable `REACT_APP_API_URL` to connect with backend
 
-Node.js + Express server
+### **Backend**
 
-Deployed on Render
+* **Node.js** + **Express** server
+* Deployed on **Render**
+* Connects to **MongoDB Atlas**
+* Provides **RESTful API endpoints** (e.g., `/profile/profile`)
 
-Connects to MongoDB Atlas
+### **Database**
 
-Provides RESTful API endpoints (e.g., /profile/profile)
+* **MongoDB Atlas** (cloud-hosted)
+* Stores **user profiles** and related data
 
-Database:
+---
 
-MongoDB Atlas (cloud-hosted)
+## ⚙️ Setup Instructions
 
-Stores user profiles and related data
+### 🔹 Local Setup
 
-⚙️ Setup Instructions
-🔹 Local Setup
+#### **Clone Repository**
 
-Clone repo
-
+```bash
 git clone <repo-url>
 cd <project-folder>
+```
 
+#### **Backend**
 
-Backend
-
+```bash
 cd backend
 npm install
+```
 
+Create `.env` file:
 
-Create .env file:
-
+```env
 MONGODB_URI=<your-mongodb-uri>
 PORT=5000
+```
 
+Start the server:
 
-Start server:
-
+```bash
 npm start
+```
 
+#### **Frontend**
 
-Frontend
-
+```bash
 cd frontend
 npm install
+```
 
+Create `.env` file:
 
-Create .env file:
-
+```env
 REACT_APP_API_URL=http://localhost:5000
+```
 
+Run the frontend:
 
-Run frontend:
-
+```bash
 npm start
+```
 
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open http://localhost:3000
+---
 
-🔹 Production Setup
+### 🔹 Production Setup
 
-Backend:
+#### **Backend**
 
-Deploy on Render
+* Deploy on **Render**
+* Set environment variable: `MONGODB_URI`
+* Render will assign a public backend URL
+  Example: `https://api-playground-backend-1.onrender.com`
 
-Set env variable MONGODB_URI
+#### **Frontend**
 
-Render will assign a public backend URL (e.g., https://api-playground-backend-1.onrender.com)
+* Deploy on **Vercel**
+* Set environment variable:
 
-Frontend:
-
-Deploy on Vercel
-
-Set env variable:
-
+```env
 REACT_APP_API_URL=https://api-playground-backend-1.onrender.com
+```
 
+* Vercel will serve the frontend
+  Example: `https://api-playground-frontend.vercel.app`
 
-Vercel will serve the frontend (e.g., https://api-playground-frontend.vercel.app)
+---
 
-🗄️ Schema
+## 🗄️ Database Schema
 
-Example Profile schema (MongoDB / Mongoose):
+### **Profile Schema (Mongoose / MongoDB)**
 
+```javascript
 const profileSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -100,13 +115,23 @@ const profileSchema = new mongoose.Schema({
   skills: [String],
   experience: String
 });
+```
 
-📡 Sample Requests
-Using curl
-# Get all profiles
+---
+
+## 📡 Sample Requests
+
+### **Using `curl`**
+
+* **Get all profiles**
+
+```bash
 curl -X GET https://api-playground-backend-1.onrender.com/profile/profile
+```
 
-# Add a profile
+* **Add a profile**
+
+```bash
 curl -X POST https://api-playground-backend-1.onrender.com/profile/profile \
 -H "Content-Type: application/json" \
 -d '{
@@ -115,23 +140,23 @@ curl -X POST https://api-playground-backend-1.onrender.com/profile/profile \
   "education": "BTech in Information Technology",
   "skills": ["React", "Node.js", "MongoDB"]
 }'
+```
 
-Using Postman
+### **Using Postman**
 
-Import the API endpoints:
+* `GET /profile/profile` → Fetch all profiles
+* `POST /profile/profile` → Add new profile
 
-GET /profile/profile → Fetch all profiles
+---
 
-POST /profile/profile → Add new profile
+## ⚠️ Known Limitations
 
-⚠️ Known Limitations
+* ❌ **No authentication/authorization** (open API)
+* ❌ **No input validation** → backend may accept malformed data
+* ❌ **Minimal error handling** (404s, JSON parse errors)
+* ⚙️ **CORS setup** may need adjustment depending on deployment
+* 🕒 Free-tier Render/Vercel → backend may **spin down on inactivity** (cold starts)
 
-No authentication/authorization (open API).
+---
 
-No input validation → backend may accept malformed data.
-
-Error handling is minimal (404s, JSON parse errors).
-
-CORS setup may need adjustment depending on deployment.
-
-Free-tier Render/Vercel → backend may spin down on inactivity (cold starts).
+Made with ❤️ using **React.js**, **Node.js**, and **MongoDB Atlas**
