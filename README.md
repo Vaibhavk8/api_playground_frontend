@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+🏗️ Architecture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend:
 
-## Available Scripts
+Built with React.js
 
-In the project directory, you can run:
+Deployed on Vercel
 
-### `npm start`
+Uses environment variable REACT_APP_API_URL to connect with backend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Node.js + Express server
 
-### `npm test`
+Deployed on Render
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Connects to MongoDB Atlas
 
-### `npm run build`
+Provides RESTful API endpoints (e.g., /profile/profile)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Database:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+MongoDB Atlas (cloud-hosted)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Stores user profiles and related data
 
-### `npm run eject`
+⚙️ Setup Instructions
+🔹 Local Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Clone repo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+git clone <repo-url>
+cd <project-folder>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Backend
 
-## Learn More
+cd backend
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create .env file:
 
-### Code Splitting
+MONGODB_URI=<your-mongodb-uri>
+PORT=5000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Start server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+npm start
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Frontend
 
-### Advanced Configuration
+cd frontend
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+Create .env file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+REACT_APP_API_URL=http://localhost:5000
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Run frontend:
+
+npm start
+
+
+Open http://localhost:3000
+
+🔹 Production Setup
+
+Backend:
+
+Deploy on Render
+
+Set env variable MONGODB_URI
+
+Render will assign a public backend URL (e.g., https://api-playground-backend-1.onrender.com)
+
+Frontend:
+
+Deploy on Vercel
+
+Set env variable:
+
+REACT_APP_API_URL=https://api-playground-backend-1.onrender.com
+
+
+Vercel will serve the frontend (e.g., https://api-playground-frontend.vercel.app)
+
+🗄️ Schema
+
+Example Profile schema (MongoDB / Mongoose):
+
+const profileSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  education: String,
+  skills: [String],
+  experience: String
+});
+
+📡 Sample Requests
+Using curl
+# Get all profiles
+curl -X GET https://api-playground-backend-1.onrender.com/profile/profile
+
+# Add a profile
+curl -X POST https://api-playground-backend-1.onrender.com/profile/profile \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Arsh Gupta",
+  "email": "arshg0080@gmail.com",
+  "education": "BTech in Information Technology",
+  "skills": ["React", "Node.js", "MongoDB"]
+}'
+
+Using Postman
+
+Import the API endpoints:
+
+GET /profile/profile → Fetch all profiles
+
+POST /profile/profile → Add new profile
+
+⚠️ Known Limitations
+
+No authentication/authorization (open API).
+
+No input validation → backend may accept malformed data.
+
+Error handling is minimal (404s, JSON parse errors).
+
+CORS setup may need adjustment depending on deployment.
+
+Free-tier Render/Vercel → backend may spin down on inactivity (cold starts).
